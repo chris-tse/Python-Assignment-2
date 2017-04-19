@@ -1,3 +1,6 @@
+# Initialize ID number for ease of change
+ID = 112971666
+
 # As written in class
 def is_prime(n):
     if n < 2:
@@ -32,11 +35,15 @@ def interesting(n):
         for j in Threes():
             if i + j > n:
                 yield i+j
-    return 0
-input = 113366623 * 10 
+
+# Input is N * 10
+input = ID * 10 
+
+# Counter to do 20 times
 count = 0
+
 for i in interesting(input):
-    if count > 20:
+    if count > 19:
         break
     print(i)
     count += 1
