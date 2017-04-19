@@ -42,9 +42,15 @@ input = ID * 10
 # Counter to do 20 times
 count = 0
 
+# Initialize empty list to hold values
+res = []
+
 for i in interesting(input):
     if count > 19:
         break
-    print(i)
+    res.append(i)
     count += 1
 
+# Print out result list
+for i in res:
+    print(i)
