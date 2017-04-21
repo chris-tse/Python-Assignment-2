@@ -1,4 +1,4 @@
-# Initialize ID number for ease of change
+# Initialize ID number for ease of testing
 ID = 112971666
 
 # As written in class
@@ -15,42 +15,44 @@ def is_prime(n):
             i += 1
         return True
 
-# As written in class
-def Primes():
-    yield 2 
-    i = 3
-    while (True):
-        if is_prime(i):
-            yield i
-        i += 2
 
+# Generates powers of 3 starting from 3 ^ 1
 def Threes():
     n = 1
     while(True):
         yield 3 ** n
         n += 1
 
-def interesting(n): 
-    for i in Primes():
-        for j in Threes():
-            if i + j > n:
-                yield i+j
+# Function to check for interesting numbers
+# Sequentially checks numbers after n and subtracts
+# powers of 3 and checks if difference is prime
+def interesting(n):
 
-# Input is N * 10
-input = ID * 10 
+    test = n + 1
 
-# Counter to do 20 times
-count = 0
+    while(True):
 
-# Initialize empty list to hold values
-res = []
+        for i in Threes():
+            j = test - i
 
-for i in interesting(input):
-    if count > 19:
-        break
-    res.append(i)
-    count += 1
+            if i >= test:
+                test += 1
+                break
 
-# Print out result list
-for i in res:
-    print(i)
+            elif is_prime(j):
+                yield test
+                test += 1
+                break
+
+# Test driver for interesting function
+# N: Starting value
+# times: Number of values to print out
+def test_interesting(N, times):
+    count = 0
+
+    for i in interesting(N):
+        if count == times:
+            break
+        print(i)
+        count += 1
+
