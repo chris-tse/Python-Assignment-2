@@ -36,13 +36,12 @@ def interesting(n):
             j = test - i
 
             if i >= test:
-                test += 1
                 break
 
             elif is_prime(j):
                 yield test
-                test += 1
                 break
+        test += 1
 
 # Test driver for interesting function
 # N: Starting value
